@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <title>Services</title>
+    <script src="https://kit.fontawesome.com/655b3b7e45.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Pacifico&family=Allura&family=Sacramento&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Lobster&family=Parisienne&family=Satisfy&family=Zilla+Slab&display=swap"
+        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:500,700&display=swap" as="style">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/assets/css/calendar.css">
+    <style>
+        .auth-section,
+        .user-menu {
+            display: none;
+            /* Hide both until JS determines what to show */
+
+        }
+
+        /* .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="IGHCS_LOGO_2-removebg-Transparent.png" alt="Logo" class="logo">
+            </a>
+        </div>
+
+        <div class="hamburger" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Business Partners</a>
+            <a href="index.html">Testimonials</a>
+
+            <!-- Services Dropdown -->
+            <div class="services-dropdown-container">
+                <span class="services-link">Services</span>
+                <div class="services-dropdown-menu">
+                    <a href="programmedirector.html">Programme Director & Facilitation of Strategic Workshops</a>
+                    <a href="strategiconference.html">Strategic Conferences</a>
+                    <a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a>
+                </div>
+            </div>
+
+            <!-- <a href="about.html">Conferences</a> -->
+            <div class="services-dropdown-container">
+                <span class="services-link">Conference</span>
+                <div class="services-dropdown-menu">
+                    <a href="service2.html">Conference Calendar</a>
+                </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+        </div>
+
+        <div class="auth-section" id="auth-section">
+            <button onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='register.html'">Sign Up</button>
+        </div>
+
+        <div class="user-menu" id="user-menu">
+            <i class="fas fa-user-circle user-icon" onclick="toggleDropdown()"></i>
+            <div class="dropdown" id="dropdown-menu">
+                <p id="username-display"></p>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- Sidebar for Mobile -->
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Business Partners</a>
+            <a href="index.html">Testimonials</a>
+            <!-- Services Dropdown -->
+            <div class="services-dropdown-container">
+                <span class="services-link">Services</span>
+                <div class="services-dropdown-menu">
+                    <a href="programmedirector.html">Programme Director & Facilitation of Strategic Workshops</a>
+                    <a href="strategiconference.html">Strategic Conferences</a>
+                    <a href="humancapitalstrategies.html">Human Capital Strategies and Implementation</a>
+                </div>
+            </div>
+            <div class="services-dropdown-container">
+                <span class="services-link">Conference</span>
+                <div class="services-dropdown-menu">
+                    <a href="service2.html">Conference Calendar</a>
+                </div>
+            </div>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>IGHCS Conference Calendar</h2>
+                    <p>Engage in dynamic human capital and business conferences that are strategically crafted to align
+                        with your professional needs and drive impactful results for your organization's key
+                        initiatives.</p>
+                    <a href="#events" class="btn btn-primary">Browse Events</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="events-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Upcoming Conferences</h2>
+                    <p>Filter and find your perfect professional event</p>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="category">Category:</label>
+                        <select id="category" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="technology">Technology</option>
+                            <option value="business">Business</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="location">Location:</label>
+                        <select id="location" class="filter-select">
+                            <option value="all">All Locations</option>
+                            <option value="johannesburg">Johannesburg</option>
+                            <option value="cape-town">Cape Town</option>
+                            <option value="durban">Durban</option>
+                            <option value="pretoria">Pretoria</option>
+                            <option value="online">Online</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="date">Date Range:</label>
+                        <select id="date" class="filter-select">
+                            <option value="all">All Dates</option>
+                            <option value="this-month">This Month</option>
+                            <option value="next-month">Next Month</option>
+                            <option value="next-3-months">Next 3 Months</option>
+                        </select>
+                    </div>
+                    <button id="resetFilters" class="btn btn-secondary">Reset Filters</button>
+                </div>
+
+                <div class="events-grid" id="eventsContainer">
+                    <!-- Events will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>Why Choose EliteConferences?</h2>
+                    <p>We curate only the most prestigious professional events, ensuring exceptional content, networking
+                        opportunities, and value for our attendees. Our platform simplifies the booking process while
+                        providing all the tools you need for successful event participation.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Secure Booking</h3>
+                            <p>Industry-leading security for all your transactions.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <h3>Dedicated Support</h3>
+                            <p>24/7 assistance for all your conference needs.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-briefcase"></i>
+                            <h3>Corporate Solutions</h3>
+                            <p>Specialized services for group bookings.</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-file-download"></i>
+                            <h3>Event Materials</h3>
+                            <p>Presentation slides and recordings available post-event.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- End of Main Section -->
+
+
+    <!-- Conference Events -->
+
+
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>IGHCS</h3>
+                    <p>Premium conference booking and management services for professionals and corporations.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#events">Browse Events</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +27 12 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@eliteconferences.co.za</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Park, Sandton, Johannesburg</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 EliteConferences. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--End Of Footer -->
+
+
+
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Book Conference</h2>
+
+            <div class="booking-steps">
+                <div class="step active" data-step="1">1. Event Details</div>
+                <div class="step" data-step="2">2. Booking Type</div>
+                <div class="step" data-step="3">3. Payment</div>
+                <div class="step" data-step="4">4. Confirmation</div>
+            </div>
+
+            <form id="bookingForm">
+                <!-- Step 1: Event Details -->
+                <div class="form-step" id="step1">
+                    <div class="event-summary">
+                        <img id="modalEventImage" src="" alt="Event Image">
+                        <div>
+                            <h3 id="modalEventName"></h3>
+                            <p id="modalEventDate"></p>
+                            <p id="modalEventLocation"></p>
+                            <p id="modalEventPrice"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticketQuantity">Number of Tickets:</label>
+                        <input type="number" id="ticketQuantity" min="1" value="1">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary next-step" data-next="2">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Booking Type -->
+                <div class="form-step" id="step2" style="display:none;">
+                    <div class="form-group">
+                        <label>Booking Type:</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="bookingType" value="individual" checked>
+                                <span class="radio-custom"></span>
+                                Individual
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="bookingType" value="company">
+                                <span class="radio-custom"></span>
+                                Company
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="individualFields">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+
+                    <div id="companyFields" style="display:none;">
+                        <div class="form-group">
+                            <label for="companyName">Company Name:</label>
+                            <input type="text" id="companyName">
+                        </div>
+                        <div class="form-group">
+                            <label for="companyEmail">Company Email:</label>
+                            <input type="email" id="companyEmail">
+                        </div>
+                        <div class="form-group">
+                            <label for="companyPhone">Company Phone:</label>
+                            <input type="tel" id="companyPhone">
+                        </div>
+                        <div class="form-group">
+                            <label for="vatNumber">VAT Number (if applicable):</label>
+                            <input type="text" id="vatNumber" name="vatNumber">
+                        </div>
+                        <div class="form-group">
+                            <label for="delegateCount">Number of Delegates:</label>
+                            <input type="number" id="delegateCount" min="1" value="1">
+                        </div>
+                        <!-- Add this to the company fields section -->
+                        <div class="form-group">
+                            <label>Bulk Add Delegates:</label>
+                            <div class="bulk-upload">
+                                <input type="file" id="delegateFile" accept=".csv,.xlsx" style="display: none;">
+                                <button type="button" id="uploadDelegateBtn" class="btn btn-secondary">
+                                    <i class="fas fa-file-upload"></i> Upload CSV/Excel
+                                </button>
+                                <a href="#" id="downloadTemplate" class="btn btn-text">
+                                    <i class="fas fa-file-download"></i> Download Template
+                                </a>
+                                <div id="uploadStatus"></div>
+                            </div>
+                        </div>
+                        <div id="delegatesContainer">
+                            <!-- Delegates will be added here dynamically -->
+
+
+                        </div>
+                        <!-- Move pagination controls here -->
+                        <div class="delegates-pagination">
+                            <button id="prevPage" class="btn btn-secondary" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span id="pageInfo">Page 1 of 1</span>
+                            <button id="nextPage" class="btn btn-secondary">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <button type="button" id="addDelegateBtn" class="btn btn-secondary">Add Delegate</button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary prev-step" data-prev="1">Back</button>
+                        <button type="button" class="btn btn-primary next-step" data-next="3">Continue</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment -->
+                <div class="form-step" id="step3" style="display:none;">
+                    <div class="payment-container">
+                        <div class="payment-summary">
+                            <h3 class="summary-title">Order Summary</h3>
+                            <div class="summary-content">
+                                <div class="summary-item">
+                                    <span class="summary-label">Event:</span>
+                                    <span class="summary-value" id="summaryEventName"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Tickets:</span>
+                                    <span class="summary-value" id="summaryTicketCount"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Subtotal:</span>
+                                    <span class="summary-value" id="summarySubtotal"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">VAT (15%):</span>
+                                    <span class="summary-value" id="summaryVAT"></span>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-item total">
+                                    <span class="summary-label">Total:</span>
+                                    <span class="summary-value" id="summaryTotal"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-section">
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="yoco-card" checked>
+                                    <div class="payment-card">
+                                        <div class="payment-card-header">
+                                            <span class="payment-icon"><i class="fab fa-cc-visa"></i> <i
+                                                    class="fab fa-cc-mastercard"></i></span>
+                                            <span class="payment-radio"></span>
+                                        </div>
+                                        <span class="payment-label">Credit/Debit Card (Yoco)</span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline prev-step" data-prev="2">
+                                    <i class="fas fa-arrow-left"></i> Back
+                                </button>
+                                <button type="button" class="btn btn-primary" id="proceedToPayment">
+                                    Complete Payment <i class="fas fa-lock"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Confirmation -->
+                    <div class="form-step" id="step4" style="display:none;">
+                        <div class="confirmation-message">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Booking Confirmed!</h3>
+                            <p>Thank you for your booking. A confirmation has been sent to your email.</p>
+                            <div class="confirmation-details">
+                                <p><strong>Booking Reference:</strong> <span id="bookingReference"></span></p>
+                                <p><strong>Event:</strong> <span id="confirmationEventName"></span></p>
+                                <p><strong>Date:</strong> <span id="confirmationEventDate"></span></p>
+                                <p><strong>Total Paid:</strong> <span id="confirmationTotal"></span></p>
+                            </div>
+                            <button type="button" class="btn btn-primary" id="closeModalBtn">Done</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <script src="/assets/js/calendar.js"></script>
+    <script>
+        // Load user session and show correct UI
+        document.addEventListener("DOMContentLoaded", function () {
+            const user = sessionStorage.getItem('username');
+
+            if (user) {
+                document.getElementById('auth-section').style.display = "none"; // Hide Login/Register
+                document.getElementById('user-menu').style.display = "block"; // Show User Icon
+                document.getElementById('username-display').innerHTML = `<i class="fa-solid fa-user"></i> ${user}`;
+            } else {
+                document.getElementById('auth-section').style.display = "flex"; // Show Login/Register
+                document.getElementById('user-menu').style.display = "none"; // Hide User Icon
+            }
+        });
+
+        function toggleDropdown() {
+            document.getElementById("dropdown-menu").classList.toggle("show");
+        }
+
+        function logout() {
+            sessionStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function (event) {
+            if (!event.target.matches('.user-icon')) {
+                let dropdown = document.getElementById("dropdown-menu");
+                if (dropdown.classList.contains("show")) {
+                    dropdown.classList.remove("show");
+                }
+            }
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("active");
+        }
+
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown-menu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        // Close menu when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                body.classList.remove('no-scroll');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        // const eventName = urlParams.get('event');
+
+        // const events = `${JSON.stringify(events)}`; // Embed events list from main JS
+
+        // const event = events.find(e => e.name === eventName);
+
+        // if (event) {
+        //     document.getElementById('event-name').textContent = event.name;
+        //     document.getElementById('event-dates').textContent = event.dates.join(', ');
+        //     document.getElementById('event-description').textContent = event.description;
+        //     document.getElementById('event-fee').textContent = event.feeNonMember.toFixed(2);
+        // } else {
+        //     document.querySelector('.event-details').innerHTML = '<p>Event not found.</p>';
+        // }
+
+    </script>
+    <!-- Add these to your head section -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="https://sdk.brevo.com/plugins/brevo-sdk.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</body>
+
+</html>
