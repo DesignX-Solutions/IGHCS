@@ -13,7 +13,7 @@ document.getElementById("subscribeForm").addEventListener("submit", async functi
     message.textContent = "⏳ Processing your subscription... Please wait.";
 
     try {
-        const response = await fetch("https://ighcs-test-with-database.onrender.com/subscribe", { 
+        const response = await fetch("https://ighcs.vercel.app/subscribe", { 
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: userEmail }),
